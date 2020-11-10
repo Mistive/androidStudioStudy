@@ -2,57 +2,32 @@ package org.techtown.study_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Button btn_move;
-    private EditText et_id;
-    private String str;
-    private ImageView test;
-
-    Button btn_test;
+    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_move = findViewById(R.id.btn_move);
-        et_id = findViewById(R.id.btn_id);
-        btn_test = findViewById(R.id.btn_test);
-        test = findViewById(R.id.test);
+        list = findViewById(R.id.list);   //이거 왜 추가해야 되는거야? ListView ID로 가져오는데 왜 typecasting을?
+        List<String> data = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, data);
+        list.setAdapter(adapter);
+
+        data.add("안녕하세요.");
+        data.add("감사해요.");
+        data.add("잘있어요.");
+        data.add("다시만나요.");
+        adapter.notifyDataSetChanged();
 
 
-        btn_move.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                str = et_id.getText().toString();
-                Intent intent = new Intent(MainActivity.this, SubActivity.class);
-                intent.putExtra("str", str);
-                startActivity(intent);  //액티비티의 이동
-            }
-        });
-
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "민수는 너무 잘생겼어", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        btn_test.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            et_id.setText("나롱이 바보");
-        }
-    });
-}
+    }
 }
