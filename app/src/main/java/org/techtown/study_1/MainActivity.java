@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btn_move;
     private EditText et_id;
     private String str;
+    private ImageView test;
 
     Button btn_test;
 
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btn_move = findViewById(R.id.btn_move);
         et_id = findViewById(R.id.btn_id);
         btn_test = findViewById(R.id.btn_test);
-
+        test = findViewById(R.id.test);
 
 
         btn_move.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
                 intent.putExtra("str", str);
                 startActivity(intent);  //액티비티의 이동
+            }
+        });
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "민수는 너무 잘생겼어", Toast.LENGTH_SHORT).show();
             }
         });
 
