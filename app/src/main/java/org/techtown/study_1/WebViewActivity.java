@@ -40,14 +40,14 @@ public class WebViewActivity extends AppCompatActivity {
         }
 
         return super.onKeyDown(keyCode, event);
-    }
+                }
 
-    private class WebViewClientClass extends WebViewClient {
-        //현재 페이지의 url을 읽어올 수 있는 method(새창, 특정 페이지에서 특정 기능 구현 등)
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            view.loadUrl(url);
-            return true;
-        }
+private class WebViewClientClass extends WebViewClient {
+    //현재 페이지의 url을 읽어올 수 있는 method(새창, 특정 페이지에서 특정 기능 구현 등)
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        view.loadUrl(url);
+        return true;
     }
+}
 }
